@@ -1,0 +1,6 @@
+{
+  "binary": "/home/thomas/.local/bin/droid",
+  "reportedVersion": "0.249.0",
+  "sha256": "ef63246cbdd93cd1f97e6d058e31d27fb135bf46b258a4ce179434f0c62e2455",
+  "method": "Static extraction of embedded JavaScript; no account credentials or runtime sessions read."
+}

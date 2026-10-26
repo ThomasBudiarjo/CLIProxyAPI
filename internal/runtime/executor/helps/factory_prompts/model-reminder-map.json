@@ -1,0 +1,112 @@
+{
+  "claude-sonnet-5": [
+    "no-comments"
+  ],
+  "claude-sonnet-5-5": [
+    "no-comments"
+  ],
+  "claude-opus-4-7": [
+    "no-comments"
+  ],
+  "claude-opus-4-7-fast": [
+    "no-comments"
+  ],
+  "claude-opus-4-8": [
+    "no-comments"
+  ],
+  "claude-opus-4-8-fast": [
+    "no-comments"
+  ],
+  "claude-opus-5": [
+    "no-comments",
+    "plain-prose"
+  ],
+  "claude-opus-5-fast": [
+    "no-comments",
+    "plain-prose"
+  ],
+  "claude-opus-5-5": [
+    "no-comments",
+    "plain-prose"
+  ],
+  "claude-opus-5-5-fast": [
+    "no-comments",
+    "plain-prose"
+  ],
+  "claude-fable-5": [
+    "no-comments",
+    "plain-prose"
+  ],
+  "claude-fable-5.1": [
+    "no-comments",
+    "parallel-tool-calls",
+    "plain-prose"
+  ],
+  "gpt-6-astra": [
+    "astra-autonomy"
+  ],
+  "gpt-6-astra-ultrafast": [
+    "astra-autonomy"
+  ],
+  "gpt-6-astra-flex": [
+    "astra-autonomy"
+  ],
+  "gemini-2.5-flash": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-2.5-pro": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3-pro-preview": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3.1-pro-preview": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3-flash-preview": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3.5-flash": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3.6-flash": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3.7-flash": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-3.8-flash": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "gemini-4-argon": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "garnet-07-15": [
+    "gemini-risk-level",
+    "gemini-spec-mode",
+    "gemini-tool-preference"
+  ],
+  "glm-5.3": [
+    "parallel-tool-calls"
+  ]
+}

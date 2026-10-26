@@ -17,6 +17,9 @@ func BuildConfigChangeDetails(oldCfg, newCfg *config.Config) []string {
 	if oldCfg == nil || newCfg == nil {
 		return changes
 	}
+	if !reflect.DeepEqual(oldCfg.FactoryKey, newCfg.FactoryKey) {
+		changes = append(changes, "factory-api-key: configuration changed")
+	}
 
 	// Simple scalars
 	if oldCfg.Client.Codex.EnableApplyPatch != newCfg.Client.Codex.EnableApplyPatch {

@@ -72,6 +72,9 @@ type APIKeyClientResult struct {
 	// MetaKeyCount is the number of Meta API keys loaded
 	MetaKeyCount int
 
+	// FactoryKeyCount is the number of native Factory API keys loaded.
+	FactoryKeyCount int
+
 	// OpenAICompatCount is the number of OpenAI compatibility API keys loaded
 	OpenAICompatCount int
 }

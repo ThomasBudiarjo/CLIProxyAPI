@@ -863,6 +863,28 @@ upstream:
 #         - api-key: "..."
 #           weight: 5 # optional: weighted-round-robin share; omitted defaults to 1; maximum 1,000,000
 #
+#   # Native Factory: only configured models are advertised. Routing follows the selected model,
+#   # not the client's wire protocol. Empty protocol infers the upstream model family.
+#   factory:
+#     - name: factory-1
+#       base-url: "https://api.factory.ai" # default
+#       prefix: "factory" # e.g. factory/haiku
+#       cloak:
+#         mode: auto # auto/always ensure Droid identity without duplication; never disables cloaking
+#         strict-mode: true # replace caller instructions with full pinned Droid 0.249.0 profile; default false
+#         prompt-profile: interactive # interactive (default) or noninteractive
+#       models:
+#         - {name: "claude-haiku-4-5-20251001", alias: "haiku", protocol: claude}
+#         - {name: "gpt-6-luna", alias: "gpt", protocol: responses}
+#         - {name: "gemini-3-flash-preview", alias: "gemini", protocol: gemini}
+#       # Strict mode uses full base + model/tool additions, not arbitrary live mission/session context.
+#       # It does not emulate Droid tools; caller tools/conversation are preserved. Counting is a local estimate.
+#       keys:
+#         - api-key: "fk-fake-example-key"
+#           weight: 1
+#         - api-key: "fk-fake-second-key"
+#           proxy-url: "socks5://proxy.example.com:1080"
+#
 #   # OpenAI compatibility providers
 #
 #   openai-compatibility:

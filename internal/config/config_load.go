@@ -306,6 +306,9 @@ func LoadConfigOptional(configFile string, optional bool) (*Config, error) {
 
 	// Sanitize Meta keys.
 	cfg.SanitizeMetaKeys()
+	if err := cfg.SanitizeFactoryKeys(); err != nil {
+		return nil, err
+	}
 
 	// Sanitize Codex header defaults.
 	cfg.SanitizeCodexHeaderDefaults()

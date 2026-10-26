@@ -476,6 +476,10 @@ func configuredModelAliasEntries(cfg *internalconfig.Config, auth *Auth) []model
 		if entry := resolveMetaAPIKeyConfig(cfg, auth); entry != nil {
 			models = asModelAliasEntries(entry.Models)
 		}
+	case "factory":
+		if entry := resolveAPIKeyConfig(cfg.FactoryKey, auth); entry != nil {
+			models = asModelAliasEntries(entry.Models)
+		}
 	default:
 		providerKey := ""
 		compatName := ""
@@ -636,6 +640,10 @@ func (m *Manager) rebuildAPIKeyModelAliasLocked(cfg *internalconfig.Config) {
 			if entry := resolveMetaAPIKeyConfig(cfg, auth); entry != nil {
 				compileAPIKeyModelAliasForModels(byAlias, entry.Models)
 			}
+		case "factory":
+			if entry := resolveAPIKeyConfig(cfg.FactoryKey, auth); entry != nil {
+				compileAPIKeyModelAliasForModels(byAlias, entry.Models)
+			}
 		default:
 			// OpenAI-compat uses config selection from auth.Attributes.
 			providerKey := ""
@@ -758,6 +766,10 @@ func (m *Manager) applyAPIKeyModelAliasWithRouting(routing *apiKeyModelRoutingSn
 		upstreamModel = resolveUpstreamModelForVertexAPIKey(cfg, auth, requestedModel)
 	case "meta":
 		upstreamModel = resolveUpstreamModelForMetaAPIKey(cfg, auth, requestedModel)
+	case "factory":
+		if entry := resolveAPIKeyConfig(cfg.FactoryKey, auth); entry != nil {
+			upstreamModel = resolveModelAliasFromConfigModels(requestedModel, asModelAliasEntries(entry.Models))
+		}
 	default:
 		upstreamModel = resolveUpstreamModelForOpenAICompatAPIKey(cfg, auth, requestedModel)
 	}

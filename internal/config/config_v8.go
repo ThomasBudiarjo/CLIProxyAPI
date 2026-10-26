@@ -65,6 +65,7 @@ var v8KeyFamilies = []configPath{
 	{"gemini-api-key", "gemini"}, {"interactions-api-key", "interactions"},
 	{"vertex-api-key", "vertex"}, {"codex-api-key", "codex"},
 	{"claude-api-key", "claude"}, {"xai-api-key", "xai"}, {"meta-api-key", "meta"},
+	{"factory-api-key", "factory"},
 	{"openai-compatibility", "openai-compatibility"},
 }
 
@@ -356,6 +357,10 @@ var sharedKeyFields = map[string]bool{
 	"request-retry": true, "request-scoped-errors": true,
 }
 
+func isSharedKeyField(provider, field string) bool {
+	return sharedKeyFields[field] || (provider == "factory" && field == "cloak")
+}
+
 func expandV8Groups(groups *yaml.Node, provider string) (*yaml.Node, error) {
 	if groups.Kind != yaml.SequenceNode {
 		return nil, fmt.Errorf("api-keys.%s must be a list", provider)
@@ -388,7 +393,7 @@ func expandV8Groups(groups *yaml.Node, provider string) (*yaml.Node, error) {
 		}
 		for i := 0; i < len(group.Content); i += 2 {
 			field := group.Content[i].Value
-			if field != "name" && field != "base-url" && field != "keys" && !sharedKeyFields[field] {
+			if field != "name" && field != "base-url" && field != "keys" && !isSharedKeyField(provider, field) {
 				return nil, fmt.Errorf("api-keys.%s: unsupported group field %s", provider, field)
 			}
 		}
@@ -402,7 +407,7 @@ func expandV8Groups(groups *yaml.Node, provider string) (*yaml.Node, error) {
 			item := &yaml.Node{Kind: yaml.MappingNode, Tag: "!!map"}
 			for i := 0; i < len(group.Content); i += 2 {
 				field := group.Content[i].Value
-				if field == "base-url" || sharedKeyFields[field] {
+				if field == "base-url" || isSharedKeyField(provider, field) {
 					setYAMLPath(item, field, group.Content[i+1])
 				}
 			}
@@ -439,7 +444,7 @@ func groupLegacyKeys(keys *yaml.Node, provider string) *yaml.Node {
 			key := deepCopyNode(entry)
 			for i := 0; i < len(entry.Content); i += 2 {
 				field := entry.Content[i].Value
-				if field == "base-url" || sharedKeyFields[field] {
+				if field == "base-url" || isSharedKeyField(provider, field) {
 					setYAMLPath(group, field, entry.Content[i+1])
 					deleteYAMLPath(key, field)
 				}

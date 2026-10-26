@@ -143,6 +143,9 @@ type Config struct {
 	// MetaKey defines Meta API key configurations using the same structure as Codex API keys.
 	MetaKey []MetaKey `yaml:"meta-api-key" json:"meta-api-key"`
 
+	// FactoryKey defines native Factory API credentials and explicit model mappings.
+	FactoryKey []FactoryKey `yaml:"factory-api-key" json:"factory-api-key"`
+
 	// XAI configures provider-wide xAI request behavior.
 	XAI XAIConfig `yaml:"xai" json:"xai"`
 

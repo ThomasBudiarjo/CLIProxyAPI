@@ -44,6 +44,7 @@ func (p *apiKeyClientProvider) Load(ctx context.Context, cfg *config.Config) (*A
 		CodexKeyCount:        codexCount,
 		XAIKeyCount:          xaiCount,
 		MetaKeyCount:         metaCount,
+		FactoryKeyCount:      len(cfg.FactoryKey),
 		OpenAICompatCount:    openAICompat,
 	}, nil
 }

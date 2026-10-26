@@ -200,6 +200,12 @@ func (s *Service) registerModelsForAuthWithConfigAndCache(ctx context.Context, c
 	case "devin":
 		models = registry.GetDevinModels()
 		models = applyExcludedModels(models, excluded)
+	case "factory":
+		if cfg != nil {
+			if entry := configEntryForAuthIndex(a, cfg.FactoryKey); entry != nil {
+				models = buildConfigModels(entry.Models, "factory", "factory", "factory")
+			}
+		}
 	case "meta":
 		models = registry.GetMetaModels()
 		if entry := resolveConfigMetaKeyForConfig(cfg, a); entry != nil {

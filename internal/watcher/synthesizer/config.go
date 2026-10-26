@@ -54,6 +54,7 @@ func (s *ConfigSynthesizer) Synthesize(ctx *SynthesisContext) ([]*coreauth.Auth,
 	out = append(out, s.synthesizeXAIKeys(ctx)...)
 	// Meta API Keys
 	out = append(out, s.synthesizeMetaKeys(ctx)...)
+	out = append(out, s.synthesizeFactoryKeys(ctx)...)
 	// OpenAI-compat
 	out = append(out, s.synthesizeOpenAICompat(ctx)...)
 	// Vertex-compat
